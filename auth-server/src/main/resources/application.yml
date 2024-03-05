@@ -1,0 +1,37 @@
+spring:
+  data:
+    mongodb:
+      database: spring-boot-jwt-auth
+      port: 27018
+
+  mongodb:
+    embedded:
+      version: 5.0.5
+
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 5.0.5
+
+server:
+  port: 8081
+
+security:
+  basic:
+    enable: false
+
+  jwt:
+    uri: /auth/**
+    header: Authorization
+    prefix: Bearer
+    expiration: 86400
+    secret: JwtSecretKey
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
