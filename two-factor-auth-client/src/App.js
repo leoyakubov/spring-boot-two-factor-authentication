@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Signin from "./signin/Signin";
+import Signup from "./signup/Signup";
+import Profile from "./profile/Profile";
+import QrCode from "./qrcode/QrCode";
+import VerifyCode from "./verifycode/VerifyCode";
 
-function App() {
+import "./App.css";
+
+const App = (props) => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" render={(props) => <Profile {...props} />} />
+          <Route
+            exact
+            path="/login"
+            render={(props) => <Signin {...props} />}
+          />
+          <Route
+            exact
+            path="/signup"
+            render={(props) => <Signup {...props} />}
+          />
+          <Route
+            exact
+            path="/qrcode"
+            render={(props) => <QrCode {...props} />}
+          />
+          <Route
+            exact
+            path="/verify"
+            render={(props) => <VerifyCode {...props} />}
+          />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
